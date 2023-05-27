@@ -9,9 +9,9 @@ import { ProductsComponent } from './products/products.component';
 export class AppComponent {
   @ViewChild(ProductsComponent) prod!: ProductsComponent;
 
-  callRenderValues() {
-    this.prod.renderValues();
-  }
+  // callRenderValues() {
+  //   this.prod.renderValues();
+  // }
 
   title = 'Angular_Project';
 }

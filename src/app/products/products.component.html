@@ -1,33 +1,34 @@
 <div class="container">
     <div class="row">
-
         <h1>{{StoreName|uppercase}}</h1>
         <br><br>
         <input type="text" [(ngModel)]="ClientName" placeholder="Enter your name">
         <p>Your name: {{ ClientName }}</p>
 
-        <!-- 
+
         <div> <select>
                 <option value="">choose an Category</option>
                 <option *ngFor="let item of CategoryList" value="{{item.name}}">
                     {{item.name}}
                 </option>
             </select>
-        </div> -->
+        </div>
+    </div>
+
+    <div class="row">
         <div *ngIf="IsPurchased; then buyBlock; else tableBlock">
         </div>
         <ng-template #tableBlock>
-            <div *ngIf="ShowProducts">
-                <div class="card" [ngClass]="Hover" *ngFor="let product of ProductList">
-                    <img src="{{product.Img}}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">{{product.Name}}</h5>
-                        <p class="card-text"> Price : {{product.Price}}$</p>
-                        <p class="card-text"> Quantity : {{product.Quantity}}</p>
-                        <a href="#" class="btn btn-primary" (click)="buyProduct()">Buy</a>
-                    </div>
+            <div class="card" [ngClass]="Hover" *ngFor="let product of ProductList">
+                <img src="{{product.Img}}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.Name}}</h5>
+                    <p class="card-text"> Price : {{product.Price}}$</p>
+                    <p class="card-text"> Quantity : {{product.Quantity}}</p>
+                    <a href="#" class="btn btn-primary" (click)="buyProduct()">Buy</a>
                 </div>
             </div>
+
         </ng-template>
 
         <ng-template #buyBlock>
@@ -36,10 +37,28 @@
             </div>
         </ng-template>
 
+    </div>
+
+    <div class="row">
         <br><br>
         <div *ngIf="Discount !== 'NoDiscount' ">
             <h3>We offer an explicit discount of {{Discount|myPercentPipe}} </h3>
         </div>
-
     </div>
+
+
+    <div class="row">
+        <div class="card" [ngClass]="Hover">
+            <img src="{{ProductByID?.Img}}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{ProductByID?.Name}}</h5>
+                <p class="card-text"> Price : {{ProductByID?.Price}}$</p>
+                <p class="card-text"> Quantity : {{ProductByID?.Quantity}}</p>
+                <a href="#" class="btn btn-primary" (click)="buyProduct()">Buy</a>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
