@@ -1,19 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { DiscountOffers } from '../Shared/DiscountOffers';
 import { IProduct } from '../Shared/IProduct';
 import { ICategory } from '../Shared/ICategory';
-
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated,
+  //encapsulation:ViewEncapsulation.ShadowDom,
+  //encapsulation:ViewEncapsulation.None
 })
 
 export class ProductsComponent {
-
-
-
   Discount: DiscountOffers;
   StoreName: string;
   StoreLogo: string;
@@ -21,9 +19,9 @@ export class ProductsComponent {
   CategoryList: ICategory[];
   ClientName: string;
   IsPurchased: boolean;
-
+  ShowProducts:boolean;
   constructor() {
-    this.Discount = DiscountOffers.FifteenPercent;
+    this.Discount = DiscountOffers.TwentyFivePercent;
     this.StoreName = "MS Store";
     this.StoreLogo = "./../../assets/1.png";
     this.ProductList = [
@@ -38,15 +36,23 @@ export class ProductsComponent {
     ];
     this.ClientName = "Mostafa Sameer";
     this.IsPurchased = false;
+    this.ShowProducts=false;
   }
 
+  renderValues() {
+    this.ShowProducts=true;
+  }
+  
   buyProduct() {
     this.IsPurchased = true;
   }
 
-  hoverable:boolean=true;
-  
-  Hover={
-    "effect":this.hoverable
+  hoverable: boolean = true;
+
+  Hover = {
+    "effect": this.hoverable
   }
+
+  
+
 }
