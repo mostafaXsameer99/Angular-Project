@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+.sidebar{
+  background-color: lightgray;
+}
+.card {
+  box-shadow: 3px 3px 3px black;
+  margin: 10px;
+  width: 15rem;
+  position: relative;
+}
+
+.card h5,
+p,
+a{
+  margin: 5px;
+}
+
+.card img{
+  margin-top: 15px;
+} 
+
+.effect:hover {
+  // border: 2px gray solid;
+  transform: scale(1.2);
+  z-index: 1;
+}

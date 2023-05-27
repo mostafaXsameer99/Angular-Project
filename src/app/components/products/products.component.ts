@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { DiscountOffers } from '../Shared/DiscountOffers';
-import { IProduct } from '../Shared/IProduct';
-import { ICategory } from '../Shared/ICategory';
-import { ProductServiceService } from '../services/product-service.service';
+import { DiscountOffers } from '../../Shared/DiscountOffers';
+import { IProduct } from '../../Shared/IProduct';
+import { ICategory } from '../../Shared/ICategory';
+import { ProductServiceService } from '../../services/product-service.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -51,7 +51,7 @@ export class ProductsComponent {
 
   ngOnInit() {
     this.ProductList = this.productService.GetAllProducts();
-    this.ProductByID = this.productService.GetProductById(2) || undefined;
-
+    this.ProductByID = this.productService.GetProductById(3) || undefined;
   }
+  
 }
