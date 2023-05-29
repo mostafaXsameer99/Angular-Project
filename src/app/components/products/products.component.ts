@@ -1,8 +1,10 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { DiscountOffers } from '../../Shared/DiscountOffers';
 import { IProduct } from '../../Shared/IProduct';
-import { ICategory } from '../../Shared/ICategory';
 import { ProductServiceService } from '../../services/product-service.service';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -13,30 +15,15 @@ import { ProductServiceService } from '../../services/product-service.service';
 })
 
 export class ProductsComponent {
+  errorMessage!: string;
   Discount: DiscountOffers;
-  StoreName: string;
-  StoreLogo: string;
   ProductByID?: IProduct;
   ProductList: IProduct[] | undefined;
-  CategoryList: ICategory[];
-  ClientName: string;
   IsPurchased: boolean;
-  ShowProducts: boolean;
-  constructor(private productService: ProductServiceService) {
-    this.Discount = DiscountOffers.TwentyFivePercent;
-    this.StoreName = "MS Store";
-    this.StoreLogo = "./../../assets/1.png";
-    this.CategoryList = [
-      { id: 1, name: "Category 1" },
-      { id: 2, name: "Category 2" }
-    ];
-    this.ClientName = "Mostafa Sameer";
-    this.IsPurchased = false;
-    this.ShowProducts = true;
-  }
 
-  renderValues() {
-    this.ShowProducts=true;
+  constructor(private productService: ProductServiceService, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.Discount = DiscountOffers.NoDiscount;
+    this.IsPurchased = false;
   }
 
   buyProduct() {
@@ -44,14 +31,28 @@ export class ProductsComponent {
   }
 
   hoverable: boolean = true;
-
   Hover = {
     "effect": this.hoverable
   }
 
+
   ngOnInit() {
-    this.ProductList = this.productService.GetAllProducts();
-    this.ProductByID = this.productService.GetProductById(3) || undefined;
+    // this.ProductList = this.productService.GetAllProducts();
+    // this.ProductByID = this.productService.GetProductById(1) || undefined;
+
+    this.productService.GetAllProducts().subscribe({
+      next: data => this.ProductList = data,
+      error: err => this.errorMessage = err
+    });
+
+    // this.productService.GetProductById(1)?.subscribe(data => { this.ProductByID = data });
   }
-  
+
+  goToDiscountedProd() {
+    this.router.navigate(["discounted"], { relativeTo: this.activatedRoute })
+  }
+
+  goToNormalProd() {
+    this.router.navigate(["Normal"], { relativeTo: this.activatedRoute })
+  }
 }

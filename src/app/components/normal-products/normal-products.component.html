@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3" *ngFor="let product of ProductList">
+            <div class="card">
+                <img src="{{product.Img}}" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title">{{product.Name}}</h4>
+                    <h4 class="card-text"> Price : {{product.Price}}$</h4>
+                    <h4 class="card-text" style="color: red;" *ngIf="product.Quantity<1">Out Of Stock </h4>
+                    <a href="/Products" class="btn btn-success">Buy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

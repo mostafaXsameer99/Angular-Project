@@ -1,14 +1,13 @@
 * {
+
   box-sizing: border-box;
 }
 
-.sidebar{
-  background-color: lightgray;
-}
+
 .card {
   box-shadow: 3px 3px 3px black;
   margin: 10px;
-  width: 15rem;
+  width: 18rem;
   position: relative;
 }
 
@@ -24,6 +23,6 @@ a{
 
 .effect:hover {
   // border: 2px gray solid;
-  transform: scale(1.2);
+  transform: scale(1.09);
   z-index: 1;
 }

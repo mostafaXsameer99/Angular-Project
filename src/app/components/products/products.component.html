@@ -1,63 +1,57 @@
-<div class="container-fluid">
+<div class="container">
+
     <div class="row">
-        <div class="col-2 sidebar">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque distinctio saepe rem, et sapiente
-            quas ex eius neque magnam quisquam atque modi dolore voluptatem esse deleniti ab excepturi iste quaerat!
+        <div *ngIf="IsPurchased; then buyBlock; else tableBlock">
         </div>
-        <div class="col-9">
+
+        <ng-template #tableBlock>
+
+            <!-- Product Cards -->
             <div class="row">
-                <h1>{{StoreName|uppercase}}</h1>
-                <br><br>
-                <input type="text" [(ngModel)]="ClientName" placeholder="Enter your name">
-                <p>Your name: {{ ClientName }}</p>
-                <div> <select>
-                        <option value="">choose an Category</option>
-                        <option *ngFor="let item of CategoryList" value="{{item.name}}">
-                            {{item.name}}
-                        </option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div *ngIf="IsPurchased; then buyBlock; else tableBlock">
-                </div>
-                <ng-template #tableBlock>
-                    <div class="card" *ngFor="let product of ProductList">
+                <div class="col-3" *ngFor="let product of ProductList">
+                    <div class="card">
                         <img src="{{product.Img}}" [ngClass]="Hover" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title">{{product.Name}}</h5>
-                            <p class="card-text"> Price : {{product.Price}}$</p>
-                            <p class="card-text"> Quantity : {{product.Quantity}}</p>
-                            <a href="#" class="btn btn-success" (click)="buyProduct()">Buy</a>
+                            <h4 class="card-title">{{product.Name}}</h4>
+                            <h4 class="card-text"> Price : {{product.Price}}$</h4>
+                            <h4 class="card-text" style="color: red;" *ngIf="product.Quantity<1">Out Of Stock </h4>
+                            <a href="/Products" class="btn btn-success" (click)="buyProduct()">Buy</a>
                         </div>
-                    </div>
-                    <div class="row">
-                        <br><br>
-                        <div *ngIf="Discount !== 'NoDiscount' ">
-                            <h3>We offer an explicit discount of {{Discount|myPercentPipe}} </h3>
-                        </div>
-                    </div>
-                </ng-template>
-
-                <ng-template #buyBlock>
-                    <div style=" margin: 10px;text-align: center;">
-                        <h3>Thanks for purchasing from our Store {{ClientName}}</h3>
-                    </div>
-                </ng-template>
-
-            </div>
-            <div class="row">
-                <h1>Product By ID</h1>
-                <div class="card">
-                    <img src="{{ProductByID?.Img}}" [ngClass]="Hover" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ProductByID?.Name}}</h5>
-                        <p class="card-text"> Price : {{ProductByID?.Price}}$</p>
-                        <p class="card-text"> Quantity : {{ProductByID?.Quantity}}</p>
-                        <a href="#" class="btn btn-primary" (click)="buyProduct()">Buy</a>
                     </div>
                 </div>
             </div>
+
+            <!-- Offers -->
+            <div>
+                <div *ngIf="Discount !== 'NoDiscount' ">
+                    <h3>We offer an explicit discount of {{Discount|myPercentPipe}} </h3>
+                </div>
+            </div>
+
+        </ng-template>
+
+        <br><br>
+
+
+
+        <!-- Thank You Message -->
+        <ng-template #buyBlock>
+            <div style=" margin: 10px;text-align: center;">
+                <h3>Thanks for purchasing from our Store</h3>
+            </div>
+        </ng-template>
+
+        <div class="row">
+            <div class="col-6" style="text-align: center;">
+                <button class="btn btn-danger" (click)="goToDiscountedProd()">Discounted Products</button>
+            </div>
+            <div class="col-6" style="text-align: center;">
+                <button class="btn btn-success" (click)="goToNormalProd()">Flash Sale</button>
+            </div>
         </div>
+        <br><br>
+        <router-outlet></router-outlet>
+        <br><br>
     </div>
+
 </div>

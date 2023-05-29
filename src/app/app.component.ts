@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ProductsComponent } from './components/products/products.component';
 
 @Component({
@@ -8,10 +8,6 @@ import { ProductsComponent } from './components/products/products.component';
 })
 export class AppComponent {
   @ViewChild(ProductsComponent) prod!: ProductsComponent;
-
-  // callRenderValues() {
-  //   this.prod.renderValues();
-  // }
 
   title = 'Angular_Project';
 }

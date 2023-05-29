@@ -9,6 +9,15 @@ import { ProductsComponent } from './components/products/products.component';
 import { FormsModule } from '@angular/forms';
 import { MyPercentPipePipe } from './my-percent-pipe.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { HomeComponent } from './components/home/home.component';
+import { UsersComponent } from './components/users/users.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { DiscountedProductsComponent } from './components/discounted-products/discounted-products.component';
+import { NormalProductsComponent } from './components/normal-products/normal-products.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +25,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     FooterComponent,
     ProductsComponent,
-    MyPercentPipePipe
+    MyPercentPipePipe,
+    SideBarComponent,
+    HomeComponent,
+    UsersComponent,
+    PostsComponent,
+    NotfoundComponent,
+    CommentsComponent,
+    DiscountedProductsComponent,
+    NormalProductsComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

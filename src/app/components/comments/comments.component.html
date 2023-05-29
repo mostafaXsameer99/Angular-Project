@@ -1,0 +1,27 @@
+<div class="container">
+    <!-- Posts Cards -->
+    <div class="row">
+        <div class="col-4" *ngFor="let comment of commentList">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">ID =>> {{comment.id}}</h4>
+                    <!-- <h4 class="card-text">Title =>>{{post.title}}</h4> -->
+                    <h4 class="card-text">Body =>>{{comment.body}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+
+
+        <div class="col-6" style="text-align: center;">
+            <button class="btn btn-danger" (click)="goToPreviousPost()">Prev Post</button>
+        </div>
+
+        <div class="col-6" style="text-align: center;">
+            <button class="btn btn-success" (click)="goToNextPost()">Next Post</button>
+        </div>
+
+    </div>
+</div>
