@@ -1,7 +1,7 @@
 <div class="container">
     <!-- Posts Cards -->
     <div class="row">
-        <div class="col-4" *ngFor="let post of postsList" (click)="goToCommentSection(post.id)">
+        <div class="col-11 col-lg-4" *ngFor="let post of postsList" (click)="goToCommentSection(post.id)">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">ID =>> {{post.id}}</h4>

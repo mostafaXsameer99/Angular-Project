@@ -8,18 +8,22 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { DiscountedProductsComponent } from './components/discounted-products/discounted-products.component';
 import { NormalProductsComponent } from './components/normal-products/normal-products.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 const routes: Routes = [
   { path: 'Home', component: HomeComponent },
   {
     path: 'Products', component: ProductsComponent, children: [
-      { path: 'discounted', component:DiscountedProductsComponent  },
+      { path: 'discounted', component: DiscountedProductsComponent },
       { path: 'Normal', component: NormalProductsComponent },
     ],
   },
   { path: 'Users', component: UsersComponent },
   { path: 'Posts', component: PostsComponent },
   { path: 'Posts/:id/Comments', component: CommentsComponent },
+  { path: 'Register', component: RegisterComponent },
+  { path: 'Login', component: LoginFormComponent },
   { path: '**', component: NotfoundComponent }
 
 ];

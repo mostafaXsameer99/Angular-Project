@@ -1,0 +1,196 @@
+<!-- <div class="container">
+    <form #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+        {{userForm.value |json}}
+        <br>
+        {{userModel|json}}
+
+        <div class="form-group">
+            <label>Name :</label>
+            <input type="text" required [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="userModel.name"
+                name="txtName" #name="ngModel" class="form-control">
+            <small class="text-danger" *ngIf="name.invalid && name.touched">Name is required</small>
+        </div>
+
+        <div class="form-group">
+            <label>Email :</label>
+            <input type="email" [(ngModel)]="userModel.email" name="txtEmail" #email="ngModel" class="form-control">
+        </div>
+ 
+        <div class="form-group">
+            <label>Phone :</label>
+            <input type="tel" required [class.is-invalid]="phone.touched && phone.invalid" [(ngModel)]="userModel.phone"
+                pattern="^\d{11}$" name="txtPhone" #phone="ngModel" class="form-control">
+            <div *ngIf="phone.errors && phone.touched">
+                <small class="text-danger" *ngIf="phone.errors['required']">Phone is reuqired</small>
+                <small class="text-danger" *ngIf="phone.errors['pattern']">Phone must be 11 digit</small>
+            </div>
+        </div> 
+
+         <div class="form-group">
+            <select class="custom-select" [(ngModel)]="userModel.topic" name="ddlTopic" #topic="ngModel">
+                <option>I'M interested in</option>
+                <option *ngFor="let topic of topics">
+                    {{topic}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-check mb-3">
+            <input type="checkbox" [(ngModel)]="userModel.offer" name="chkOffers" #offer="ngModel"
+                class="form-check-input">
+            <label class="form-check-label">
+                Send me new offers
+            </label>
+        </div>
+
+        <input type="submit" [disabled]="userForm.form.invalid" class="btn btn-primary" value="submit">
+    </form>
+</div> -->
+
+
+<section class="vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                                <h3 style="color: red;" *ngIf="alreadyUsed"
+                                    class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">This
+                                    Email Already Used</h3>
+
+                                <form class="mx-1 mx-md-4" #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+
+                                    <!-- userName input  -->
+                                    <div class="form-group d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" class="form-control" required
+                                                [class.is-invalid]="name.invalid && name.touched" name="txtName"
+                                                #name="ngModel" [(ngModel)]="userModel.userName"
+                                                placeholder="userName..." pattern="^[A-Za-z ]+$" />
+
+
+                                            <div *ngIf="name.errors && name.touched">
+                                                <small class="text-danger"
+                                                    *ngIf="name.invalid && name.touched && name.errors['required']">
+                                                    Name is required
+                                                </small>
+                                                <small class="text-danger"
+                                                    *ngIf="name.invalid && name.touched && name.errors['pattern']">
+                                                    Name must contain only alphabets
+                                                </small>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Email input  -->
+                                    <div class="form-group d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="email" class="form-control" required
+                                                [class.is-invalid]="email.invalid && email.touched"
+                                                [(ngModel)]="userModel.email" name="txtEmail" #email="ngModel"
+                                                placeholder="email..."
+                                                pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" />
+                                            <div *ngIf="email.errors && email.touched">
+                                                <small class="text-danger"
+                                                    *ngIf="name.invalid && name.touched && email.errors['required']">
+                                                    Email is required
+                                                </small>
+                                                <small class="text-danger"
+                                                    *ngIf="name.invalid && name.touched && email.errors['pattern']">
+                                                    Invalid email format
+                                                </small>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Password input -->
+                                    <div class="form-group d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="password" class="form-control" required
+                                                [class.is-invalid]="password.invalid && password.touched"
+                                                [(ngModel)]="userModel.password" name="txtPassword" #password="ngModel"
+                                                placeholder="password..."
+                                                pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$" />
+
+                                            <div *ngIf="password.errors && password.touched">
+                                                <small class="text-danger" *ngIf="password.errors['required']">
+                                                    Password is required
+                                                </small>
+                                                <small class="text-danger" *ngIf="password.errors['pattern']">
+                                                    Password must contain at least 8 characters including one uppercase
+                                                    letter, one lowercase letter, and one digit.
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Repeat Password input -->
+                                    <div class="form-group d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="password" class="form-control" required
+                                                [(ngModel)]="userModel.confpassword" name="txtconfpassword"
+                                                #confpassword="ngModel" placeholder="confirm password..." />
+
+                                            <small class="text-danger"
+                                                *ngIf="userModel.confpassword!=userModel.password">
+                                                Passwords do not match</small>
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <!-- Dropdown List -->
+                                    <div class="form-group d-flex flex-row align-items-center mb-4">
+                                        <i class="fa fa-flag fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <select class=" form-control" required [(ngModel)]="userModel.knowFrom"
+                                                [class.is-invalid]="ddlKnowFrom.invalid && ddlKnowFrom.touched"
+                                                name="ddlKnowFrom" #ddlKnowFrom="ngModel"
+                                                placeholder="where you hear about us...">
+                                                <option *ngFor="let item of knowFrom">
+                                                    {{item}}
+                                                </option>
+                                            </select>
+                                            <small class="text-danger"
+                                                *ngIf="ddlKnowFrom.invalid && ddlKnowFrom.touched">
+                                                Field is required</small>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <input type="submit"
+                                            [disabled]="userForm.form.invalid||userModel.confpassword!=userModel.password"
+                                            class="btn btn-success btn-lg" value="Sign Up">
+                                    </div>
+
+                                    <div class="form-check d-flex justify-content-center mb-5">
+                                        <h3 class="small fw-bold mt-2 pt-1 mb-0">Already a member ? <a href="/Login"
+                                                class="link-danger">Login</a></h3>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                    class="img-fluid" alt="Sample image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

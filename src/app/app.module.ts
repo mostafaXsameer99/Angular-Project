@@ -18,6 +18,8 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { DiscountedProductsComponent } from './components/discounted-products/discounted-products.component';
 import { NormalProductsComponent } from './components/normal-products/normal-products.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { NormalProductsComponent } from './components/normal-products/normal-pro
     CommentsComponent,
     DiscountedProductsComponent,
     NormalProductsComponent,
+    RegisterComponent,
+    LoginFormComponent,
 
   ],
   imports: [
